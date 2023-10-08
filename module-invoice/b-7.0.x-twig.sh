@@ -15,7 +15,7 @@ perl -pi\
   containers/php-fpm/custom.ini
 
 $SCRIPT_PATH/../parts/shared/prepare_shop_package.sh -e"CE" -b"b-7.0.x"
-$SCRIPT_PATH/../parts/shared/require_twig_components.sh -e"CE" -b"b-7.0.x" -t"twig"
+$SCRIPT_PATH/../parts/shared/require_twig_components.sh -e"CE" -b"b-7.0.x"
 $SCRIPT_PATH/../parts/shared/require_theme.sh -t"twig" -b"b-7.0.x"
 
 git clone https://github.com/Fresh-Advance/Invoice source/dev-packages/invoice
