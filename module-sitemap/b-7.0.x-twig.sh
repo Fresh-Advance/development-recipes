@@ -19,20 +19,20 @@ $SCRIPT_PATH/../parts/shared/require_twig_components.sh -e"CE" -b"b-7.0.x"
 $SCRIPT_PATH/../parts/shared/require_theme.sh -t"twig" -b"b-7.0.x"
 
 git clone https://github.com/Fresh-Advance/Sitemap source/dev-packages/sitemap
-docker-compose exec \
+docker compose exec \
   php composer config repositories.fresh-advance/sitemap \
   --json '{"type":"path", "url":"./dev-packages/sitemap", "options": {"symlink": true}}'
-docker-compose exec php composer require fresh-advance/sitemap:* --no-update
+docker compose exec php composer require fresh-advance/sitemap:* --no-update
 
 $SCRIPT_PATH/../parts/shared/require_demodata_package.sh -e"CE" -b"b-7.0.x"
 
 # Install all preconfigured dependencies
-docker-compose exec -T php composer update --no-interaction
+docker compose exec -T php composer update --no-interaction
 
 $SCRIPT_PATH/../parts/shared/setup_database.sh
 
-docker-compose exec -T php bin/oe-console oe:module:activate fa_sitemap
-docker-compose exec -T php bin/oe-console oe:theme:activate twig
+docker compose exec -T php bin/oe-console oe:module:activate fa_sitemap
+docker compose exec -T php bin/oe-console oe:theme:activate twig
 
 $SCRIPT_PATH/../parts/shared/create_admin.sh
 
