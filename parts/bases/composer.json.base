@@ -14,7 +14,8 @@
             "oxid-esales/oxideshop-unified-namespace-generator": true
         },
         "preferred-install": {
-            "oxid-esales/*": "source"
+            "oxid-esales/*": "source",
+            "fresh-advance/*": "source",
         }
     }
 }
