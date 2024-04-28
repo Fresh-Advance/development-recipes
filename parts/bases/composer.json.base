@@ -18,7 +18,7 @@
         },
         "preferred-install": {
             "oxid-esales/*": "source",
-            "fresh-advance/*": "source",
+            "fresh-advance/*": "source"
         }
     }
 }
