@@ -27,16 +27,13 @@ docker compose up --build -d php
 
 cp ${SCRIPT_PATH}/../parts/bases/composer.json.base ./source/composer.json
 
-docker compose exec php composer config repositories.oxid-esales/oxideshop-ce git https://github.com/OXID-eSales/oxideshop_ce.git
-docker compose exec php composer require oxid-esales/oxideshop-ce:dev-b-7.0.x --no-update
-
-docker compose exec php composer require oxid-esales/developer-tools:dev-b-7.0.x --no-update
-
-docker compose exec php composer config repositories.fresh-advance/invoice git https://github.com/Fresh-Advance/Invoice.git
-docker compose exec php composer require fresh-advance/invoice:dev-b-7.0.x --no-update
+$SCRIPT_PATH/../parts/shared/require.sh -n"oxid-esales/oxideshop-ce" -g"https://github.com/OXID-eSales/oxideshop_ce.git" -v"dev-b-7.0.x"
+$SCRIPT_PATH/../parts/shared/require.sh -n"oxid-esales/developer-tools" -v"dev-b-7.0.x"
+$SCRIPT_PATH/../parts/shared/require.sh -n"fresh-advance/invoice" -g"https://github.com/Fresh-Advance/Invoice.git" -v"dev-b-7.0.x"
 
 $SCRIPT_PATH/../parts/shared/require_twig_components.sh -e"CE" -b"b-7.0.x"
-$SCRIPT_PATH/../parts/shared/require_theme.sh -t"twig" -b"b-7.0.x"
+
+$SCRIPT_PATH/../parts/shared/require.sh -n"oxid-esales/twig-theme" -v"dev-b-7.0.x"
 
 $SCRIPT_PATH/../parts/shared/require_demodata_package.sh -e"CE" -b"b-7.0.x"
 
